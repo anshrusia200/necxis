@@ -5,7 +5,7 @@ export class Socket {
 
   static getInstance(): any {
     if (!this.instance) {
-      const url = "http://localhost:5000";
+      const url = "https://necxis-socket-server.onrender.com";
       this.instance = io(url);
       return this.instance;
     }
