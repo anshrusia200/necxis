@@ -21,7 +21,7 @@ export default function PostsPage() {
     try {
       setLoading(true);
       const fetchedPosts = await axios.get("/api/posts");
-      setPosts(fetchedPosts.data);
+      setPosts(fetchedPosts.data.reverse());
     } catch (error) {
       console.log("Cannnot feetch posts");
     }
@@ -71,8 +71,11 @@ export default function PostsPage() {
           url: url,
           description: description,
         };
-        await axios.post("/api/post", post);
-
+        const response = await axios.post("/api/post", post);
+        console.log(response.data);
+        setPosts((posts: any) => {
+          return [response.data, ...posts];
+        });
         setDescription("");
         setUrl("");
       } catch (error) {
