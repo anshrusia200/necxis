@@ -32,11 +32,9 @@ export default function PostsPage() {
       console.log("Cannnot feetch posts");
     }
   };
-  useEffect(() => {
-    fetchPosts();
-  }, []);
 
   useEffect(() => {
+    fetchPosts();
     socket.on("updateLike", (postId: string, count: number) => {
       console.log("heheh");
       setPosts((prevPosts: any) =>
