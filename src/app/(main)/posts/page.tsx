@@ -23,7 +23,11 @@ export default function PostsPage() {
       const fetchedPosts = await fetch("/api/posts", {
         cache: "no-store",
       });
-      setPosts(fetchedPosts);
+      fetchedPosts.json().then((result) => {
+        setPosts(result.reverse());
+      });
+
+      // setPosts(fetchedPosts);
     } catch (error) {
       console.log("Cannnot feetch posts");
     }
