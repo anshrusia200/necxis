@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import Post from "../../../../../../models/Post";
-import { connect } from "/db";
+import { connect } from "@/config/db";
 
 export const PATCH = async (
   req: Request,

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const connect = async () => {
+export const connect = async () => {
   try {
     const uri = process.env.MONGODB_URI;
     if (!uri) throw new Error("No uri provided");
@@ -10,5 +10,3 @@ const connect = async () => {
     throw new Error("Error in connecting to database");
   }
 };
-
-export default connect;
