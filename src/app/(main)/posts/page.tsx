@@ -20,13 +20,10 @@ export default function PostsPage() {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const fetchedPosts = await axios.get("/api/posts", {
-        params: {
-          // Append a unique query parameter to prevent caching
-          _cache: new Date().getTime(),
-        },
+      const fetchedPosts = await fetch("/api/posts", {
+        cache: "no-store",
       });
-      setPosts(fetchedPosts.data.reverse());
+      setPosts(fetchedPosts);
     } catch (error) {
       console.log("Cannnot feetch posts");
     }
