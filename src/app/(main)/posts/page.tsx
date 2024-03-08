@@ -135,7 +135,12 @@ export default function PostsPage() {
         >
           {loading ? (
             posts.map((post: any) => (
-              <Grid item xs={12} onClick={() => handleOpenPost(post)}>
+              <Grid
+                item
+                xs={12}
+                key={post._id}
+                onClick={() => handleOpenPost(post)}
+              >
                 <Post post={post} />
               </Grid>
             ))
