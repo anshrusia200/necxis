@@ -8,7 +8,7 @@ import { FavoriteBorder, ChatBubbleOutline } from "@mui/icons-material";
 
 export default function Post({ post }: any) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, margin: "0 auto" }}>
       <CardActionArea>
         <CardMedia
           component="img"

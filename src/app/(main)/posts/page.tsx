@@ -17,24 +17,27 @@ export default function PostsPage() {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [posts, setPosts] = useState<any>([]);
-  const fetchPosts = async () => {
-    try {
-      setLoading(true);
-      const fetchedPosts = await fetch("/api/posts", {
-        cache: "no-store",
-      });
-      fetchedPosts.json().then((result) => {
-        setPosts(result.reverse());
-      });
-
-      // setPosts(fetchedPosts);
-    } catch (error) {
-      console.log("Cannnot feetch posts");
-    }
-  };
 
   useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        const fetchedPosts = await fetch("/api/posts", {
+          cache: "no-store",
+        });
+        fetchedPosts.json().then((result) => {
+          setPosts(result.reverse());
+        });
+
+        // setPosts(fetchedPosts);
+      } catch (error) {
+        console.log("Cannnot feetch posts");
+      }
+    };
     fetchPosts();
+  });
+
+  useEffect(() => {
     socket.on("updateLike", (postId: string, count: number) => {
       console.log("heheh");
       setPosts((prevPosts: any) =>
@@ -135,8 +138,14 @@ export default function PostsPage() {
       <Grid item xs={6} sx={{ marginTop: 3 }}>
         <Grid
           container
-          spacing={3}
-          sx={{ height: "80vh", overflowY: "scroll", paddingBottom: 2 }}
+          spacing={2}
+          sx={{
+            height: "80vh",
+            overflowY: "scroll",
+            paddingBottom: 2,
+          }}
+          justifyContent="center"
+          alignItems="center"
         >
           {loading ? (
             posts.map((post: any) => (
@@ -144,6 +153,8 @@ export default function PostsPage() {
                 item
                 xs={12}
                 key={post._id}
+                justifyContent="center"
+                alignItems="center"
                 onClick={() => handleOpenPost(post)}
               >
                 <Post post={post} />

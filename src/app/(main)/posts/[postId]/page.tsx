@@ -108,7 +108,7 @@ const PostPage = () => {
             <img
               src={post.url}
               alt="Post"
-              style={{ width: "100%", height: "auto" }}
+              style={{ width: "80%", height: "auto" }}
             />
             <Typography variant="body1">{post.description}</Typography>
             {!like ? (
@@ -124,6 +124,7 @@ const PostPage = () => {
                   onClick={handleLikeClick}
                   style={{
                     fontSize: 40,
+                    cursor: "pointer",
                   }}
                 />
                 {likeCount}
@@ -143,6 +144,7 @@ const PostPage = () => {
                     backgroundColor: "white",
                     color: "red",
                     fontSize: 40,
+                    cursor: "pointer",
                   }}
                 />
                 {likeCount}
