@@ -12,6 +12,7 @@ export const POST = async (req: Request) => {
       description: description,
     });
     await post.save();
+    console.log("hey hey", post);
     return new NextResponse(JSON.stringify(post), {
       status: 200,
     });

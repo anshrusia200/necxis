@@ -20,12 +20,21 @@ export default function PostsPage() {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const fetchedPosts = await axios.get("/api/posts");
+      const fetchedPosts = await axios.get("/api/posts", {
+        params: {
+          // Append a unique query parameter to prevent caching
+          _cache: new Date().getTime(),
+        },
+      });
       setPosts(fetchedPosts.data.reverse());
     } catch (error) {
       console.log("Cannnot feetch posts");
     }
   };
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
   useEffect(() => {
     socket.on("updateLike", (postId: string, count: number) => {
       console.log("heheh");
@@ -55,10 +64,6 @@ export default function PostsPage() {
     return () => {
       socket.off("updateLike");
     };
-  }, []);
-
-  useEffect(() => {
-    fetchPosts();
   }, []);
 
   const [url, setUrl] = useState<string>("");
