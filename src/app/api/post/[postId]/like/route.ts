@@ -1,11 +1,13 @@
 import { NextResponse, NextRequest } from "next/server";
 import Post from "../../../../../../models/Post";
+import { connect } from "/db";
 
 export const PATCH = async (
   req: Request,
   { params }: { params: { postId: string } }
 ) => {
   try {
+    await connect();
     console.log("got your request");
     if (!params.postId)
       return new NextResponse("Post ID Missing", { status: 400 });
