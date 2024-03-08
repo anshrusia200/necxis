@@ -11,9 +11,7 @@ import { UploadButton } from "../../../utils/uploadthing";
 import { useParams, useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
-import { Socket } from "@/utils/socket";
-
-export const socket = Socket.getInstance();
+import { socket } from "@/utils/socket";
 
 export default function PostsPage() {
   const router = useRouter();

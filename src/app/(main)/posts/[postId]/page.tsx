@@ -6,7 +6,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import { socket } from "../page";
+import { socket } from "../../../../utils/socket";
 
 const PostPage = () => {
   const params = useParams();

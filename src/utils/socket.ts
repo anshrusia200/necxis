@@ -13,3 +13,4 @@ export class Socket {
     return this.instance;
   }
 }
+export const socket = Socket.getInstance();
