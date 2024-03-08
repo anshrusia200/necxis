@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import connect from "/db";
+import { connect } from "/db";
 import Post from "../../../../../models/Post";
 
 export const GET = async (
