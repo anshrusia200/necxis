@@ -18,7 +18,7 @@ export const socket = Socket.getInstance();
 export default function PostsPage() {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<any>([]);
   const fetchPosts = async () => {
     try {
       setLoading(true);
@@ -134,7 +134,7 @@ export default function PostsPage() {
           sx={{ height: "80vh", overflowY: "scroll", paddingBottom: 2 }}
         >
           {loading ? (
-            posts.map((post) => (
+            posts.map((post: any) => (
               <Grid item xs={12} onClick={() => handleOpenPost(post)}>
                 <Post post={post} />
               </Grid>
