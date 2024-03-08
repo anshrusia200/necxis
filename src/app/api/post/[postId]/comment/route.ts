@@ -14,7 +14,6 @@ export const PATCH = async (
 
     const { comment } = await req.json();
     console.log(comment);
-    // write code here
     const newComment = {
       comment: comment,
     };

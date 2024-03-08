@@ -4,6 +4,7 @@ import Post from "../../../../models/Post";
 
 export const POST = async (req: Request) => {
   try {
+    await connect();
     console.log("got your request");
     const { url, description } = await req.json();
     const post = new Post({
